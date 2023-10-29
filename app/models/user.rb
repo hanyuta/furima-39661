@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,         presence: true
-  validates :first_name,       presence: true
-  validates :last_name,        presence: true
-  validates :first_name_kana,  presence: true
-  validates :last_name_kana,   presence: true
+  validates :first_name,       presence: true, format: { with: /\A[ぁ-んァ-ンー-龥]+\z/, message: "は全角ひらがな、カタカナ、漢字で入力してください" }
+  validates :last_name,        presence: true, format: { with: /\A[ぁ-んァ-ンー-龥]+\z/, message: "は全角ひらがな、カタカナ、漢字で入力してください" }
+  validates :first_name_kana,  presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
+  validates :last_name_kana,   presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
   validates :birthday,         presence: true
 
   validates :password,         presence: true,
