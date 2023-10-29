@@ -90,22 +90,22 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include 'Password is too long (maximum is 128 characters)'
       end
       it 'first_nameに半角文字が含まれていると登録できない' do
-        @user.first_name="ﾀﾛｳ"
+        @user.first_name = 'ﾀﾛｳ'
         @user.valid?
         expect(@user.errors.full_messages).to include 'First name は全角ひらがな、カタカナ、漢字で入力してください'
       end
       it 'last_nameに半角文字が含まれていると登録できない' do
-        @user.last_name="ﾀﾅｶ"
+        @user.last_name = 'ﾀﾅｶ'
         @user.valid?
         expect(@user.errors.full_messages).to include 'Last name は全角ひらがな、カタカナ、漢字で入力してください'
       end
       it 'first_name_kanaに半角文字が含まれていると登録できない' do
-        @user.first_name_kana="ﾀﾛｳ"
+        @user.first_name_kana = 'ﾀﾛｳ'
         @user.valid?
         expect(@user.errors.full_messages).to include 'First name kana は全角カタカナで入力してください'
       end
       it 'last_name_kanaに半角文字が含まれていると登録できない' do
-        @user.last_name_kana="ﾀﾅｶ"
+        @user.last_name_kana = 'ﾀﾅｶ'
         @user.valid?
         expect(@user.errors.full_messages).to include 'Last name kana は全角カタカナで入力してください'
       end
