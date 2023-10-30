@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :last_name_kana,   presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください' }
   validates :birthday,         presence: true
 
-  validates :password,         format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'は半角英数字混合を混同して設定してください' }
+  validates :password,         format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は半角英数字混合を混同して設定してください' }
 end
