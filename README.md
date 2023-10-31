@@ -32,6 +32,6 @@
 | city            | string     | null: false             |
 | addresses       | string     | null: false             |
 | building        | string     |                         |
-| phone_number    | integer    | null: false             |
+| phone_number    | integer    | null: false ,uni1ue:true|
 | bought_id       | references | null: false ,foreign_key|
 
