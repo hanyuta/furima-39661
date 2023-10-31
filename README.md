@@ -28,7 +28,7 @@ has_many:bought_records
 
 *association
 belongs_to:user
-has_one:bought_records
+has_one:bought_record
 has_one_attached:item_image
 
 #bought_records
@@ -37,10 +37,10 @@ has_one_attached:item_image
 
 *association
 belongs_to:user
-belongs_to:items
+belongs_to:item
 has_one:shipping_address
 
-#shipping_address 
+#shipping_addresses
 | postal_code     | string     | null: false             |
 | prefecture_id   | integer    | null: false             |
 | city            | string     | null: false             |
@@ -50,4 +50,4 @@ has_one:shipping_address
 | bought_record   | references | null: false ,foreign_key|
 
 *association
-belongs_to:bought_records
+belongs_to:bought_record
