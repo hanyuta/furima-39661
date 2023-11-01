@@ -18,7 +18,7 @@ has_many:bought_records
 | item_info                   | text       | null: false             |
 | item_category_id            | integer    | null: false             |
 | item_sales_status_id        | integer    | null: false             |
-| item_shipping_fee_stats_id  | integer    | null: false             |
+| item_shipping_fee_status_id | integer    | null: false             |
 | prefecture_id               | integer    | null: false             |
 | item_scheduled_delivery_id  | integer    | null: false             |  
 | item_price                  | integer    | null: false             |
