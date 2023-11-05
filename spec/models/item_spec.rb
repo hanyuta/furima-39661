@@ -61,27 +61,27 @@ RSpec.describe Item, type: :model do
       it 'item_priceが日本語では登録できない' do
         @item.item_price = 'あいう'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item price is not entered correctly'
+        expect(@item.errors.full_messages).to include 'Item price is not a number'
       end
       it 'item_priceが英字では登録できない' do
         @item.item_price = 'ABC'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item price is not entered correctly'
+        expect(@item.errors.full_messages).to include 'Item price is not a number'
       end
       it 'item_priceが全角数字では登録できない' do
         @item.item_price = '１２３'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item price is not entered correctly'
+        expect(@item.errors.full_messages).to include 'Item price is not a number'
       end
       it 'item_priceが300より小さいと登録できない' do
         @item.item_price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item price is not entered correctly'
+        expect(@item.errors.full_messages).to include 'Item price must be greater than or equal to 300'
       end
       it 'item_priceが999999より大きいと登録できない' do
-        @item.item_price = 10_000_000
+        @item.item_price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Item price is not entered correctly'
+        expect(@item.errors.full_messages).to include 'Item price must be less than or equal to 9999999'
       end
       it 'userが紐づいていないと保存できない' do
         @item.user = nil
