@@ -11,5 +11,5 @@ class Item < ApplicationRecord
   validates :prefecture_id,                       numericality: { other_than: 1, message: "can't be blank" }
   validates :item_scheduled_delivery_id,          numericality: { other_than: 1, message: "can't be blank" }
   validates :item_price,                          presence: true,
-                                                  format: { with: /\A[3-9][0-9]{2,6}\z/, message: 'is only numbers' }
+                                                  format: { with: /\A[3-9][0-9]{2,6}\z/, message: 'is not entered correctly' }
 end
