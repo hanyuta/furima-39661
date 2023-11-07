@@ -1,0 +1,26 @@
+<li class='list'>
+  <%=  link_to "#" do%>
+    <div class='item-img-content'>
+      <%= image_tag item.item_image.variant(resize:'173.25x173.25'), class: "item-img" %>
+
+      <%# 商品が売れていればsold outを表示しましょう %>
+      <div class='sold-out'>
+        <%# <span>Sold Out!!</span> %>
+      </div>
+      <%# //商品が売れていればsold outを表示しましょう %>
+
+    </div>
+    <div class='item-info'>
+      <h3 class='item-name'>
+        <%= item.item_name %>
+      </h3>
+      <div class='item-price'>
+        <span><%= item.item_price %>円<br><%= ShippingFee.find(item.item_shipping_fee_staus_id).name %></span>
+        <div class='star-btn'>
+          <%= image_tag "star.png", class:"star-icon" %>
+          <span class='star-count'>0</span>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</li>
