@@ -1,5 +1,5 @@
 <li class='list'>
-  <%=  link_to "#" do%>
+  <%=  link_to item_path(item.id) do%>
     <div class='item-img-content'>
       <%= image_tag item.item_image.variant(resize:'173.25x173.25'), class: "item-img" %>
 
