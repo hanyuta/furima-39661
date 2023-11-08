@@ -1,6 +1,6 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50') if @item.item_image.attached? %>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50') , "/" %>
 
   </header>
   <div class="items-sell-main">
@@ -21,7 +21,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :item_image, id:"item-image" %>
+        <%= f.file_field :item_image, id:"item-image" if @item.item_image.attached?%>
       </div>
     </div>
     <%# /商品画像 %>
