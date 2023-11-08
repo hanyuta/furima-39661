@@ -20,7 +20,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :item_image, id:"item-image" %>
+        <%= f.file_field :item_image, id:"item-image" if @item.item_image.attached? %>
       </div>
     </div>
     <%# /商品画像 %>
@@ -138,7 +138,7 @@
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', "#", class:"back-btn" %>
+      <%=link_to 'もどる', item_path(@item.id), class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
