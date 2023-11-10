@@ -1,6 +1,6 @@
-class ItemsController < ApplicationController   
-  before_action :authenticate_user!, only: [:new ,:edit ,:destroy]
-  before_action :set_item, only: [:edit , :show]
+class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :set_item, only: [:edit, :show]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def create
@@ -28,6 +27,7 @@ class ItemsController < ApplicationController
     unless current_user == User.find(@item.user_id)
       redirect_to action: :index
     end
+    redirect_to action: :index
   end
 
   def update
