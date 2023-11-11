@@ -24,10 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    set_item
     unless check_user
       redirect_to action: :index
     end
-
   end
 
   def update
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
     @item.destroy
-    redirect_to root_path
+    redirect_to action: :index
   end
 
   private
@@ -60,6 +60,6 @@ class ItemsController < ApplicationController
   end
 
   def check_user
-    current_user == User.find(@item.user_id)
+    current_user.id == @item.user.id
   end
 end
