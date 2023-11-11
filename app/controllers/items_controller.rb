@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
     unless current_user == User.find(@item.user_id)
       redirect_to action: :index
     end
-    item = Item.find(params[:id])
     item.destroy
     redirect_to root_path
   end
