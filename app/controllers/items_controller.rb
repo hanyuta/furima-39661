@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    set_item
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    set_item
     unless current_user == User.find(@item.user_id)
       redirect_to action: :index
     end
