@@ -6,3 +6,6 @@ class ShippingAddress < ApplicationRecord
   validates :city,           presence: true
   validates :address,        presence: true
   validates :phone_number,   presence: true ,numericality: {only_integer: true, greater_than_or_equal_to:9_999_999_999}
+
+
+end
