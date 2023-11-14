@@ -12,4 +12,10 @@ class Order
     validates :item_id
     validates :bought_record_id
   end
+
+  def save
+    bought_record = BoughtRecord.create(user_id: user_id,item_id: item_id)
+
+    ShippingAddress.create(postal_code: postal_code,prefecture_id: prefecture_id,city: city,address: address,building: building,phone_number: phone_number,bought_record_id: bought_record.id)
+  end
 end
