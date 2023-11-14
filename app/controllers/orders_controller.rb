@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user! , expect: [:index , :new]
+
   def index
     @item = Item.find(params[:item_id])
-    @shipping_address = ShippingAddress.new
+    @order = Order.new
   end
 
   def create
@@ -12,13 +14,12 @@ class OrdersController < ApplicationController
     else
       render "index",status: :unprocessable_entity
     end
-
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:postal_code,:prefecture_id,:city,:address,:phone_number).merge(user_id: current_user.id ,item_id: item_id ,token: params[:token])
+    params.require(:order).permit(:postal_code,:prefecture_id,:city,:address,:building,:phone_number).merge(user_id: current_user.id ,item_id: item_id ,token: params[:token])
   end
 
 
