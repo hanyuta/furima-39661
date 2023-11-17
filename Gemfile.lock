@@ -324,7 +324,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.5)
   payjp
-  pg
+  pg (~> 1.0)
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.0)
