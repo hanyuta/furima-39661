@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order(created_at: :desc)
+    check_bought
   end
 
   def new
@@ -58,5 +59,9 @@ class ItemsController < ApplicationController
 
   def check_user
     current_user.id == @item.user.id
+  end
+
+  def check_bought
+    @records = BoughtRecord.all
   end
 end
