@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do
-    @shipping_address = FactoryBot.build(:shipping_address)
+    @order = FactoryBot.build(:order)
   end
 
   describe "入力確認" do
     context "内容に問題がない場合" do
-      it "postal_code,city,address,phone_numberが空でない、且つprefecture_idが1以外が選択されている" do
+      it "全ての情報が正しく入力されている" do
         expect(@shipping_address).to be_valid
       end
     end
