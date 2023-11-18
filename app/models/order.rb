@@ -7,10 +7,17 @@ class Order
     validates :postal_code,    format:{ with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid.Enter it as follows (e.g. 123-4567)"}
     validates :city
     validates :address
-    validates :phone_number,   numericality: {
-                                              only_integer:{ message:"is invalid. Input only number"},
-                                              greater_than_or_equal_to: 999_999_999,less_than_or_equal_to: 100_000_000_000, message: 'is too short or too long'
-                                              } 
+    validates :phone_number, format: {with: /\A\d{10,11}\z/,
+        message: ->(object, data) {
+        if data[:value] =~ /\D/
+          "is invalid. Input only number"
+        elsif data[:value].length < 10
+          "is too short"
+        elsif data[:value].length > 11
+          "is too long "
+        end
+      }
+    }
     validates :user_id
     validates :item_id
   end
