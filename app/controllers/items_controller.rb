@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show ,:update ,:destroy]
-  before_action :check_bought, only: [:index ,:show ,:edit ,:delete]
+  before_action :set_bought, only: [:index ,:show ,:edit ,:delete]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    bought_check
     unless check_user
       redirect_to action: :index
     end
@@ -61,7 +62,16 @@ class ItemsController < ApplicationController
     current_user.id == @item.user.id
   end
 
-  def check_bought
+  def set_bought
     @records = BoughtRecord.all
+  end
+
+  def bought_check
+    @records.each do |bought_record_id|
+      if bought_record_id.item.id == @item.id
+        redirect_to action: :index
+        return
+      end
+    end
   end
 end
