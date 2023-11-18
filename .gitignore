@@ -31,3 +31,6 @@
 /config/master.key
 
 .Ds_Store
+app/views/shared/_error_messages.html.erbZone.Identifier
+app/views/shared/_second-footer.html.erbZone.Identifier
+app/views/shared/_second-header.html.erbZone.Identifier
