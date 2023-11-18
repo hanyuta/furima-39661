@@ -3,11 +3,14 @@
     <div class='item-img-content'>
       <%= image_tag item.item_image.variant(resize:'173.25x173.25'), class: "item-img" %>
 
-      <%# 商品が売れていればsold outを表示しましょう %>
+    <% records.each do |bought_record| %>     
+      <% if bought_record.item.id == item.id %>
       <div class='sold-out'>
-        <%# <span>Sold Out!!</span> %>
+        <span>Sold Out!!</span>
       </div>
-      <%# //商品が売れていればsold outを表示しましょう %>
+      <% end %>
+    <% end %>
+    
 
     </div>
     <div class='item-info'>
