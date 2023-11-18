@@ -14,7 +14,7 @@ class Order
         elsif data[:value].length < 10
           "is too short"
         elsif data[:value].length > 11
-          "is too long "
+          "is too long"
         end
       }
     }
