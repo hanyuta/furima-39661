@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:edit, :show ,:update ,:destroy]
+  before_action :check_bought, only: [:index ,:show ,:edit ,:delete]
 
   def index
     @items = Item.order(created_at: :desc)
-    check_bought
   end
 
   def new
