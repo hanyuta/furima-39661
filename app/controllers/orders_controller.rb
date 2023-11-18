@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   before_action :set_item ,only: [:index , :order_params]
 
   def index
+    set_bought
+    bought_check
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     set_item
     @order = Order.new
@@ -30,6 +32,10 @@ class OrdersController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
+  
+  def set_bought
+    @records = BoughtRecord.all
+  end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -38,6 +44,15 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def bought_check
+    @records.each do |bought_record_id|
+      if bought_record_id.item.id == @item.id
+        redirect_to root_path
+        return
+      end
+    end
   end
 
 end
