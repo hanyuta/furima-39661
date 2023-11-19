@@ -12,6 +12,10 @@ RSpec.describe Order, type: :model do
       it '全ての情報が正しく入力されている' do
         expect(@order).to be_valid
       end
+      it '建物名が空でも購入できる' do
+        @order.building = ''
+        expect(@order).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
