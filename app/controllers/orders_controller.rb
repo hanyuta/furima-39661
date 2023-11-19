@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, expect: [:index, :new]
   before_action :set_item, only: [:index, :order_params]
-
+  before_action :check_user, only: [:index]
 
   def index
     set_bought
@@ -58,13 +58,11 @@ class OrdersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def check_user
     if current_user.id == @item.user.id 
       redirect_to root_path
       return
     end
+  end
 
->>>>>>> c3057021fa5751b4440d38fc7c2a90ba75ea12a8
 end
