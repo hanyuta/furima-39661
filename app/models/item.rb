@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee
   belongs_to :suchedule
   belongs_to :user
+  has_one    :bought_record
 
   validates :item_image, presence: true
   validates :item_name, :item_info, presence: true

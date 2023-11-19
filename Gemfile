@@ -79,7 +79,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg' , '~> 1.0'
 end
 
 gem "devise"
@@ -87,3 +87,5 @@ gem "mini_magick"
 gem "image_processing","~> 1.2"
 gem "active_hash"
 gem "pry-rails"
+gem "payjp"
+gem "gon"

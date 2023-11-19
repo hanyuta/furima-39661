@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_bought, only: [:index, :show, :edit, :delete]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -24,14 +25,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    set_item
-    unless check_user
-      redirect_to action: :index
-    end
+    bought_check
+    return if check_user
+
+    redirect_to action: :index
   end
 
   def update
-    set_item
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -40,10 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    set_item
-    unless check_user
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless check_user
     @item.destroy
     redirect_to action: :index
   end
@@ -61,5 +58,18 @@ class ItemsController < ApplicationController
 
   def check_user
     current_user.id == @item.user.id
+  end
+
+  def set_bought
+    @records = BoughtRecord.all
+  end
+
+  def bought_check
+    @records.each do |bought_record_id|
+      if bought_record_id.item.id == @item.id
+        redirect_to action: :index
+        return
+      end
+    end
   end
 end
