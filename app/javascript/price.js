@@ -7,11 +7,11 @@ function SalesProfit(){
     document.getElementById('profit').textContent='0';
   }else if (!isNaN(sellingPrice)){
     const price=parseFloat(sellingPrice);
-    const tax= 0.1*price;
+    const tax= Math.floor(0.1*price);
     const profit= price -tax;
 
-    document.getElementById('add-tax-price').textContent=Math.floor(tax);
-    document.getElementById('profit').textContent=Math.floor(profit);
+    document.getElementById('add-tax-price').textContent=tax;
+    document.getElementById('profit').textContent=profit;
   }else{
     document.getElementById('add-tax-price').textContent='NaN';
     document.getElementById('profit').textContent='NaN';
