@@ -10,7 +10,8 @@
 | last_name          | string | null: false             |
 | first_name_kana    | string | null: false             |
 | last_name_kana     | string | null: false             |
-| birthday           | date   | null: false             |
+| birthday           | date   | null: false             |  
+
 *association
 has_many:items
 has_many:bought_records
@@ -26,9 +27,7 @@ has_many:bought_records
 | prefecture_id               | integer    | null: false             |
 | item_scheduled_delivery_id  | integer    | null: false             |  
 | item_price                  | integer    | null: false             |
-| user                        | references | null: false ,foreign_key|
-
-//item_imageはActiveStorageで実装する
+| user                        | references | null: false ,foreign_key|  
 
 *association
 belongs_to:user
@@ -39,7 +38,7 @@ has_one_attached:item_image
 |     |     |     | 
 | --- | --- | --- | 
 | user        | references | null: false , foreign_key|
-| item        | references | null: false , foreign_key|
+| item        | references | null: false , foreign_key|  
 
 *association
 belongs_to:user
@@ -55,7 +54,7 @@ has_one:shipping_address
 | address         | string     | null: false             |
 | building        | string     |                         |
 | phone_number    | string     | null: false             |
-| bought_record   | references | null: false ,foreign_key|
+| bought_record   | references | null: false ,foreign_key|  
 
 *association
 belongs_to:bought_record
