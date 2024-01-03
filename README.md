@@ -1,6 +1,8 @@
 #テーブル設計
 
 #users
+|     |     |     | 
+| --- | --- | --- | 
 | email              | string | null: false ,unique:true| 
 | encrypted_password | string | null: false             |
 | nickname           | string | null: false             |
@@ -14,6 +16,8 @@ has_many:items
 has_many:bought_records
 
 #items
+|     |     |     | 
+| --- | --- | --- | 
 | item_name                   | string     | null: false             |
 | item_info                   | text       | null: false             |
 | item_category_id            | integer    | null: false             |
@@ -32,6 +36,8 @@ has_one:bought_record
 has_one_attached:item_image
 
 #bought_records
+|     |     |     | 
+| --- | --- | --- | 
 | user        | references | null: false , foreign_key|
 | item        | references | null: false , foreign_key|
 
@@ -41,6 +47,8 @@ belongs_to:item
 has_one:shipping_address
 
 #shipping_addresses
+|     |     |     | 
+| --- | --- | --- | 
 | postal_code     | string     | null: false             |
 | prefecture_id   | integer    | null: false             |
 | city            | string     | null: false             |
